@@ -1,0 +1,48 @@
+Feature: Salesforce Log In functionality test
+
+  Scenario: If user enters correct username and password and Click sign in button then login should be successful
+    Given user is on Login Page
+    When user enters UserName as "userName"
+    And user enters Password as "Password"
+    And user click on sign in button
+    Then Log in should be successful
+
+  Scenario: If user enters correct username and incorrect password and click sign in button then login should be unsuccessful
+    Given user is on Login Page
+    When user enters UserName as "userName"
+    And user enters Password as "IncorrectPassword"
+    And user click on sign in button
+    Then login should be unsuccessful
+
+  Scenario: If user enters incorrect username and correct password and click sign in button then login should be unsuccessful
+    Given user is on Login Page
+    When user enters UserName as "IncorrectUserName"
+    And user enters Password as "Password"
+    And user click on sign in button
+    Then login should be unsuccessful
+
+  Scenario: if user enters incorrect username and incorrect password and click on sign in button then login should be unsuccessful
+    Given user is on Login Page
+    When user enters UserName as "IncorrectUserName"
+    And user enters Password as "IncorrectPassword"
+    And user click on sign in button
+    Then login should be unsuccessful
+
+  Scenario: If user enters blank in username and blank in password and click on sign in button then login should be unsuccessful
+    Given user is on Login Page
+    When user enters UserName as " "
+    And user enters Password as " "
+    And user click on sign in button
+    Then login should be unsuccessful
+
+
+  Scenario Outline: If user enters username and password and Click sign in button then login should be successful
+    Given user is on Login Page
+    When user enters Username as "<Username>" and Password as "<Password>"
+    And user click on sign in button
+    Then Log in should be successful
+
+    Examples:
+      |Username               |Password  |
+      |CorrectUserName1       |CorrectPassword|
+      |CorrectUserName2       |XYZ       |
